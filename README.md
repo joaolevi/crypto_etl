@@ -13,10 +13,10 @@ An ETL project to extract and transform data from https://coinmarketcap.com to u
 To verify if the dataframe is organized, I created a table in my local computer. Using a .yaml to configure which server I want the table needs to be created. I can pass these parameters on the `DBConfig.yaml` archive in the main directory:
 
 ```
-login:'postgres'
-password:'1234'
-ip:'localhost'
-port:'5432'
+'login':'postgres'
+'password':'1234'
+'ip':'localhost'
+'port':'5432'
 ```
 
 When I want to up some data in a AWS server, I can just modify these parameters and then it'll connect with them.
