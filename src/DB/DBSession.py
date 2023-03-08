@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import sessionmaker
 from os import path
 from inspect import getfile, currentframe
 from yaml import safe_load
@@ -9,14 +9,14 @@ class DBSession():
         self.session = None
         self.engine  = None
 
-    def get_main_directory():
+    def get_main_directory(self):
         return (path.dirname(path.abspath(getfile(currentframe()))))
 
 
     def read_config_db_file(self):
         maindirectory = self.get_main_directory()
         try:
-            with open(maindirectory + "config/DBConfig.yaml", 'r') as fileconfig:
+            with open(maindirectory + "/../../DBConfig.yaml", 'r') as fileconfig:
                 config = safe_load(fileconfig)
         except Exception as e:   
             config = {'login'   : 'postgres', 
@@ -27,7 +27,7 @@ class DBSession():
     
     def start_db_session(self):
         config = self.read_config_db_file()
-        self.engine = create_engine('postgresql://'+ config['login'] +':'+ config['password'] +'@'+  +':'+ config['port'] +'/postgres')
+        self.engine = create_engine('postgresql://'+ config['login'] +':'+ config['password'] +'@'+ config['ip'] +':'+ config['port'] +'/postgres')
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
 

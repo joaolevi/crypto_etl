@@ -4,3 +4,4 @@ sqlalchemy_utils
 psycopg2
 pandas
 requests
+pyyaml

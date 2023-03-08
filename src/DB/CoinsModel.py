@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Float, Text
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 
 from DBSession import DBSession
 
@@ -22,9 +22,13 @@ class Coins(Base):
     percent_change_24h = Column(Float)
     percent_change_7d = Column(Float)
    
-    def start():
+    def start(self):
         db = DBSession()
         db.start_db_session()
         Base.metadata.create_all(db.engine)
         print ('\nTable created on database')
         return db.session, db.engine
+    
+if __name__ == '__main__':
+    test = Coins()
+    test.start()
