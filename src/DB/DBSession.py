@@ -15,10 +15,12 @@ class DBSession():
 
     def read_config_db_file(self):
         maindirectory = self.get_main_directory()
+        print('O maindirectory: '+maindirectory)
         try:
             with open(maindirectory + "/../../DBConfig.yaml", 'r') as fileconfig:
                 config = safe_load(fileconfig)
-        except Exception as e:   
+        except Exception as e:
+            print('Exception: '+ str(e))  
             config = {'login'   : 'postgres', 
                       'password': '1234',
                       'ip'      : 'localhost',
@@ -27,7 +29,7 @@ class DBSession():
     
     def start_db_session(self):
         config = self.read_config_db_file()
-        self.engine = create_engine('postgresql://'+ config['login'] +':'+ config['password'] +'@'+ config['ip'] +':'+ config['port'] +'/postgres')
+        self.engine = create_engine('postgresql://'+ config["login"] +':'+ config["password"] +'@'+ config["ip"] +':'+ config["port"] +'/coins')
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
 

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, Text
 from sqlalchemy.orm import declarative_base
 
-from DBSession import DBSession
+from .DBSession import DBSession
 
 Base = declarative_base()
 
@@ -28,7 +28,3 @@ class Coins(Base):
         Base.metadata.create_all(db.engine)
         print ('\nTable created on database')
         return db.session, db.engine
-    
-if __name__ == '__main__':
-    test = Coins()
-    test.start()

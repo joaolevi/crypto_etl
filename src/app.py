@@ -2,6 +2,48 @@ import json
 import pandas as pd
 from requests import Session
 
+from DB.CoinsModel import Coins
+
+def check_if_valid_data(df: pd.DataFrame) -> bool:
+    
+    # Check if dataframe is empty
+    if df.empty:
+        print("\nDataframe empty. Finishing execution")
+        return False 
+
+    # Check for nulls
+    if df.symbol.empty:
+        raise Exception("\nSymbol is Null or the value is empty")
+ 
+     # Check for nulls
+    if df.price.empty:
+        raise Exception("\nPrice is Null or the value is empty")
+
+    # Check for nulls
+    if df.data_added.empty:
+        raise Exception("\nData is Null or the value is empty")
+
+    return True
+    
+def load_data(table_name, coins_df, session_db, engine_db):
+    
+    # validate
+    if check_if_valid_data(coins_df):
+        print("\nData valid, proceed to Load stage")
+    
+    # load data on database
+    try:
+        coins_df.to_sql(table_name, engine_db, index=False, if_exists='append')
+        print ('\nData Loaded on Database')
+
+    except Exception as err:
+        print(f"\nFail to load data on database: {err}")
+
+    session_db.commit()
+    session_db.close()
+    print("\nClose database successfully")
+    return session_db
+
 def get_data(start, limit, convert, key, url):
     
     # set limit of data from api
@@ -78,6 +120,10 @@ def get_data(start, limit, convert, key, url):
     coins_df = pd.DataFrame(coin_dict, columns = ["name", "symbol", "data_added", "last_updated","price","volume_24h","circulating_supply","total_supply","max_supply","percent_change_1h","percent_change_24h","percent_change_7d"])
     print ("Data on Pandas Dataframe:\n")
     print(coins_df.head(10))
+
+    session_db, engine_db = Coins().start()
+
+    load_data('tb_coins',coins_df, session_db, engine_db)
 
 # call the get_data function and load data on database
 get_data('1',
