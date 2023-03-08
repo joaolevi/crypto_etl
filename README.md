@@ -33,4 +33,15 @@ After create a Database named 'coins' on PostgreSQL on AWS:
 
 ![image](https://user-images.githubusercontent.com/56874672/223598125-4e781f33-6433-49eb-9ff6-0f8346ec72e2.png)
 
+### Data Persistence
+
+Finally, after run the `app.py`, the table was created on PostgreSQL on AWS server:
+
+![image](https://user-images.githubusercontent.com/56874672/223860166-f5037354-80f3-4b66-ab04-178a8f65cf70.png)
+
+And the Data was storaged successfully:
+
+![image](https://user-images.githubusercontent.com/56874672/223859137-838c983b-7b7e-4f06-a273-83d868493319.png)
+
+
 
