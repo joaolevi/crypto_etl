@@ -8,7 +8,7 @@ An ETL project to extract and transform data from https://coinmarketcap.com to u
 
 ## Starting
 
-### A local PostgreSQL test
+### A local persistence on PostgreSQL
 
 To verify if the dataframe is organized, I created a table in my local computer. Using a .yaml to configure which server I want the table needs to be created. I can pass these parameters on the `DBConfig.yaml` archive in the main directory:
 
@@ -26,4 +26,11 @@ After a simple start, we can see at the WSL terminal `Table created on database`
 ![image](https://user-images.githubusercontent.com/56874672/223557536-2a1092a4-e9cd-47eb-9b8d-6be3d5871604.png)
 
 The table was created in my local DB server.
+
+### PostgreSQL Database on AWS
+
+After create a Database named 'coins' on PostgreSQL on AWS:
+
+![image](https://user-images.githubusercontent.com/56874672/223598125-4e781f33-6433-49eb-9ff6-0f8346ec72e2.png)
+
 
