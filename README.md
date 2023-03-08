@@ -8,9 +8,7 @@ An ETL project to extract and transform data from https://coinmarketcap.com to u
 
 ## Starting
 
-### A local persistence on PostgreSQL
-
-To verify if the dataframe is organized, I created a table in my local computer. Using a .yaml to configure which server I want the table needs to be created. I can pass these parameters on the `DBConfig.yaml` archive in the main directory:
+Using a .yaml to configure which server I want the table needs to be created. I can pass these parameters on the `DBConfig.yaml` archive in the main directory:
 
 ```
 'login':'postgres'
@@ -21,13 +19,7 @@ To verify if the dataframe is organized, I created a table in my local computer.
 
 When I want to up some data in a AWS server, I can just modify these parameters and then it'll connect with them.
 
-### PostgreSQL Database on AWS
-
-After create a Database named 'coins' on PostgreSQL on AWS:
-
-![image](https://user-images.githubusercontent.com/56874672/223598125-4e781f33-6433-49eb-9ff6-0f8346ec72e2.png)
-
-### Data Persistence
+### PostgreSQL Database on AWS and Data persistence
 
 Finally, after run the `app.py`, the table was created on PostgreSQL on AWS server:
 
