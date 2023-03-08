@@ -21,12 +21,6 @@ To verify if the dataframe is organized, I created a table in my local computer.
 
 When I want to up some data in a AWS server, I can just modify these parameters and then it'll connect with them.
 
-After a simple start, we can see at the WSL terminal `Table created on database` as we expected. To find the table in the `psql` we can just typing `TABLE tb_coins`:
-
-![image](https://user-images.githubusercontent.com/56874672/223557536-2a1092a4-e9cd-47eb-9b8d-6be3d5871604.png)
-
-The table was created in my local DB server.
-
 ### PostgreSQL Database on AWS
 
 After create a Database named 'coins' on PostgreSQL on AWS:
